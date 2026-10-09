@@ -1,0 +1,24 @@
+{
+  "title": "UCI Online Retail",
+  "creator": "Daqing Chen",
+  "year": 2015,
+  "url": "https://archive.ics.uci.edu/dataset/352/online+retail",
+  "doi": "https://doi.org/10.24432/C5BW33",
+  "license": "CC BY 4.0",
+  "currency": "GBP",
+  "start": "2011-06-01",
+  "end": "2011-11-30",
+  "products": 12,
+  "days": 183,
+  "raw_sha256": "f5385cbb54bbebf7196389109c6b0621faab0c304e3702548165e71c84aede8b",
+  "statistics": {
+    "raw_rows": 541909,
+    "window_rows": 307355,
+    "retained_window_rows": 272952,
+    "excluded_window_rows": 34403
+  },
+  "selection": "Top 12 units sold among UK product SKUs active on at least 60 days, with no daily total above 2,000, in the specified window. No clipping of retained daily sales.",
+  "zero_days": "Calendar days without retained positive transactions are explicitly zero-filled; zero sales do not prove zero demand.",
+  "assumptions": "Stock and lead times are constructed planning scenarios. Unit cost is an assumed 60% of median observed selling price, not a measured procurement cost. No exchange-rate conversion.",
+  "deduplication": "Transactions are retained as recorded; no exact-row deduplication, because repeated invoice lines may be legitimate. Cancellations, returns, nonpositive prices and nonproduct codes excluded. Missing customer IDs are irrelevant and never exported."
+}

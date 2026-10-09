@@ -1,0 +1,14 @@
+import './build.mjs';
+import { readFile,writeFile } from 'node:fs/promises';
+const base='/stockwise/';
+const root=new URL('../dist/',import.meta.url);
+let html=await readFile(new URL('index.html',root),'utf8');
+html=html.replace('<meta charset="UTF-8" />','<meta charset="UTF-8" /><meta name="stockwise-host" content="static" />');
+html=html.replaceAll('="/public/','="'+base+'public/').replaceAll('="/src/','="'+base+'src/');
+html=html.replace('</head>',`<link rel="canonical" href="https://desta-data-analytics.github.io${base}" /><meta property="og:title" content="Stockwise · Indonesian Retail Inventory Planner" /><meta property="og:description" content="Explore 55,000 simulated Indonesian retail transactions, five forecasting baselines and reviewable restock plans in rupiah." /><meta property="og:url" content="https://desta-data-analytics.github.io${base}" /><meta property="og:type" content="website" /></head>`);
+await writeFile(new URL('index.html',root),html);
+let app=await readFile(new URL('src/app.js',root),'utf8');
+app=app.replaceAll("'/public/","'"+base+"public/").replaceAll('"/public/','"'+base+'public/');
+await writeFile(new URL('src/app.js',root),app);
+await writeFile(new URL('.nojekyll',root),'');
+console.log('GitHub Pages demo ready at '+base);

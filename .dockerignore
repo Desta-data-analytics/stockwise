@@ -1,0 +1,6 @@
+.git
+.env*
+data/private
+node_modules
+dist
+docs/preview*.jpg

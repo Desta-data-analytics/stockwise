@@ -1,0 +1,30 @@
+{
+  "title": "Indonesian Retail Sales & Cost Dataset",
+  "creator": "Lycus Bendln",
+  "kind": "synthetic",
+  "license": "CC0: Public Domain",
+  "url": "https://www.kaggle.com/datasets/lycusbendln/indonesian-retail-sales-and-cost-dataset",
+  "currency": "IDR",
+  "start": "2024-01-01",
+  "end": "2024-12-31",
+  "products": 26,
+  "days": 366,
+  "raw_sha256": "ae2246a987c782e910ff8f9765945930524cfbd507fde2d19d9aad29cca8d890",
+  "statistics": {
+    "raw_rows": 55000,
+    "retained_window_rows": 55000,
+    "daily_observations": 9516,
+    "units": 114889,
+    "cities": 25,
+    "channels": {
+      "Tokopedia": 13677,
+      "Toko": 16621,
+      "Website": 8112,
+      "Shopee": 16590
+    }
+  },
+  "selection": "All product IDs and all transactions, aggregated across channels and cities to daily product units. This is a pooled inventory scenario, not separate stock for each city or store.",
+  "zero_days": "Calendar dates without source transactions are explicitly zero-filled. Missing sales do not establish missing demand.",
+  "assumptions": "Source sales and production costs are synthetic. Unit cost uses median biaya_produksi / qty, excluding shipping, packing and platform fees. On-hand stock and supplier lead times are constructed planning inputs. No real retailer outcomes or stock ledger are available.",
+  "deduplication": "Unique order IDs verified. All 55,000 positive-quantity rows retained; customer and order identifiers omitted from public aggregates."
+}

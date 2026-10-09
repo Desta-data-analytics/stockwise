@@ -1,0 +1,2 @@
+# Security
+The public GitHub Pages deployment is a static demo with browser-local guest storage; it has no private operator backend. The optional Node server supports one operator and requires HTTPS, private configuration and a persistent volume. See docs/DEPLOYMENT.md. Report suspected security defects privately through the owner's GitHub contact rather than posting credentials or private data in an issue. No formal security audit is claimed.
