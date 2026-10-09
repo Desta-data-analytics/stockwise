@@ -18,6 +18,12 @@ test('HTTP operator flow enforces auth, origin, CSRF, revision and private expor
   await new Promise((resolve,reject)=>{child.stdout.on('data',chunk=>{if(chunk.toString().includes('Stockwise ready'))resolve()});child.on('error',reject);child.on('exit',code=>reject(new Error('Server exited '+code)));});
   const get=async url=>fetch(origin+url);
   assert.equal((await get('/health')).status,200);
+  for (const [asset,type] of [['/public/brand/favicon-v2.png','image/png'],['/public/brand/favicon.ico','image/x-icon']]) {
+    const icon=await get(asset);
+    assert.equal(icon.status,200);
+    assert.equal(icon.headers.get('content-type'),type);
+    assert.ok((await icon.arrayBuffer()).byteLength>0);
+  }
   assert.equal((await get('/api/workspace')).status,401);
   assert.equal((await get('/server/auth.mjs')).status,404);
   const html=await get('/'); assert.ok(html.headers.get('content-security-policy').includes("frame-ancestors 'none'"));

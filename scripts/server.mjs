@@ -14,7 +14,7 @@ const hash = process.env.OPERATOR_PASSWORD_HASH;
 if (production && (!/^https:\/\//.test(origin) || !/^[a-f0-9]{32}:[a-f0-9]{128}$/.test(hash || ''))) throw new Error('Production requires an HTTPS APP_ORIGIN and valid OPERATOR_PASSWORD_HASH');
 const store = new Store(process.env.DATA_DIR || fileURLToPath(new URL('../data/private/', import.meta.url)));
 const sessions = new Sessions();
-const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.json':'application/json', '.csv':'text/csv' };
+const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.ico': 'image/x-icon', '.json':'application/json', '.csv':'text/csv' };
 function json(res, status, value) { res.writeHead(status, {'Content-Type':'application/json'}); res.end(JSON.stringify(value)); }
 async function body(req) {
   if (!req.headers['content-type']?.startsWith('application/json')) { const e = new Error('JSON request required'); e.status=415; throw e; }
@@ -66,7 +66,7 @@ const server = http.createServer(async (req, res) => {
       return json(res,404,{error:'Unknown API route'});
     }
     if(!['GET','HEAD'].includes(req.method)) return json(res,405,{error:'Method not allowed'});
-    if(!(requested==='/' || requested==='/index.html' || /^\/src\/[a-z-]+\.(js|css)$/.test(requested) || /^\/public\/[a-zA-Z0-9/_-]+\.(svg|json|csv)$/.test(requested))) return json(res,404,{error:'Not found'});
+    if(!(requested==='/' || requested==='/index.html' || /^\/src\/[a-z-]+\.(js|css)$/.test(requested) || /^\/public\/[a-zA-Z0-9/_-]+\.(svg|png|jpg|ico|json|csv)$/.test(requested))) return json(res,404,{error:'Not found'});
     const file=path.resolve(root,'.'+(requested==='/'?'/index.html':requested));
     const resolved=await realpath(file);
     if(!resolved.startsWith(root) || !(await stat(resolved)).isFile()) return json(res,404,{error:'Not found'});
