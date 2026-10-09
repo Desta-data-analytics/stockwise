@@ -4,6 +4,7 @@ const base='/stockwise/';
 const root=new URL('../dist/',import.meta.url);
 let html=await readFile(new URL('index.html',root),'utf8');
 html=html.replace('<meta charset="UTF-8" />','<meta charset="UTF-8" /><meta name="stockwise-host" content="static" />');
+html=html.replaceAll('="/favicon.ico','="'+base+'favicon.ico');
 html=html.replaceAll('="/public/','="'+base+'public/').replaceAll('="/src/','="'+base+'src/');
 html=html.replace('</head>',`<link rel="canonical" href="https://desta-data-analytics.github.io${base}" /><meta property="og:title" content="Stockwise · Indonesian Retail Inventory Planner" /><meta property="og:description" content="Explore 55,000 simulated Indonesian retail transactions, five forecasting baselines and reviewable restock plans in rupiah." /><meta property="og:url" content="https://desta-data-analytics.github.io${base}" /><meta property="og:type" content="website" /><meta property="og:image" content="https://desta-data-analytics.github.io/stockwise/public/brand/social-preview.jpg" /><meta property="og:image:width" content="1440" /><meta property="og:image:height" content="1000" /><meta name="twitter:card" content="summary_large_image" /></head>`);
 await writeFile(new URL('index.html',root),html);

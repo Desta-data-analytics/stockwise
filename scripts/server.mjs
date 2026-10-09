@@ -66,8 +66,8 @@ const server = http.createServer(async (req, res) => {
       return json(res,404,{error:'Unknown API route'});
     }
     if(!['GET','HEAD'].includes(req.method)) return json(res,405,{error:'Method not allowed'});
-    if(!(requested==='/' || requested==='/index.html' || /^\/src\/[a-z-]+\.(js|css)$/.test(requested) || /^\/public\/[a-zA-Z0-9/_-]+\.(svg|png|jpg|ico|json|csv)$/.test(requested))) return json(res,404,{error:'Not found'});
-    const file=path.resolve(root,'.'+(requested==='/'?'/index.html':requested));
+    if(!(requested==='/' || requested==='/index.html' || requested==='/favicon.ico' || /^\/src\/[a-z-]+\.(js|css)$/.test(requested) || /^\/public\/[a-zA-Z0-9/_-]+\.(svg|png|jpg|ico|json|csv)$/.test(requested))) return json(res,404,{error:'Not found'});
+    const file=path.resolve(root,'.'+(requested==='/'?'/index.html':requested==='/favicon.ico'?'/public/brand/favicon.ico':requested));
     const resolved=await realpath(file);
     if(!resolved.startsWith(root) || !(await stat(resolved)).isFile()) return json(res,404,{error:'Not found'});
     res.writeHead(200,{'Content-Type':mime[path.extname(file)] || 'application/octet-stream','Cache-Control':production?'public, max-age=300':'no-cache'});
