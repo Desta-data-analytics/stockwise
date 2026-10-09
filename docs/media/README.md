@@ -1,0 +1,2 @@
+# Live demo screenshots
+Captured from https://desta-data-analytics.github.io/stockwise/ on 9 October 2026. All use the Indonesian simulation and default planning assumptions, including a 14-day evaluation horizon. No private business/user data is displayed. Overview, product forecast, and purchase-plan screenshots are suitable for portfolio/LinkedIn media; simulated quantities are not business outcomes.

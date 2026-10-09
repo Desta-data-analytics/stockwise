@@ -21,7 +21,7 @@ PRD001 Kaos Polos Katun Lokal: daily MAE 4.67 units, WAPE 36.64%; assumed stock 
 ## Validation and remaining work
 19 automated tests passed, including original UCI checks, Indonesian source-unit conservation, all three forecast horizons, CSV validation, IDR storage and HTTP auth/CSRF/revision flow. Syntax checks and static build passed. See VERIFICATION.md for browser evidence.
 
-Ready to present as a portfolio MVP with transparent data provenance and limitations. Before sharing a clickable project: publish a reviewed repository, deploy a public HTTPS demo, verify that deployment, and add the final URLs here. Production use also requires configured secrets, persistent storage, tested off-host recovery and operational/security review. No real stockout reduction, revenue uplift, multi-user SaaS, production SLA or million-row browser capacity is claimed.
+Ready to present as a portfolio MVP with transparent data provenance and limitations. Published repository: https://github.com/Desta-data-analytics/stockwise. Live GitHub Pages demo: https://desta-data-analytics.github.io/stockwise/. Portfolio case study: https://natalius-desta-riyanto.github.io/portfolio/work/stockwise/. GitHub validation/deployment workflows succeeded and the public demo was browser-checked. Production use also requires configured secrets, persistent storage, tested off-host recovery and operational/security review. No real stockout reduction, revenue uplift, multi-user SaaS, production SLA or million-row browser capacity is claimed.
 
 ## Draft portfolio post
 Saya membangun Stockwise, aplikasi untuk mengubah riwayat penjualan menjadi rencana restock yang bisa ditinjau.
